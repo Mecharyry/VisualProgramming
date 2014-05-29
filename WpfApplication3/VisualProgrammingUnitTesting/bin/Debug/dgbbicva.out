@@ -1,0 +1,8 @@
+﻿C:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug> "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" /t:exe /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"
+
+
+Microsoft (R) Visual C# Compiler version 4.0.30319.33440
+for Microsoft (R) .NET Framework 4.5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+error CS5001: Program 'c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug\Sample.exe' does not contain a static 'Main' method suitable for an entry point

@@ -1,0 +1,123 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:PropertiesGrid="clr-namespace:WpfApplication3.PropertiesGrid"
+	xmlns:ViewModel="clr-namespace:WpfApplication3.ViewModel"
+	mc:Ignorable="d"
+	x:Class="WpfApplication3.View.PropertiesTabView"
+	x:Name="UserControl">
+
+	<UserControl.Resources>
+		<ViewModel:VariablesViewModel x:Key="Variables"/>
+
+		<Style x:Key="FocusVisual">
+			<Setter Property="Control.Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
+		<SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
+		<SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
+		<SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
+		<SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
+		<SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
+
+		<Style x:Key="VariableItemStyle" TargetType="{x:Type ListBoxItem}">
+			<Setter Property="SnapsToDevicePixels" Value="True"/>
+			<Setter Property="Padding" Value="4,1"/>
+			<Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type ListBoxItem}">
+						<Border x:Name="Bd" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true" BorderThickness="0,3" CornerRadius="10" BorderBrush="DarkSlateGray">
+							<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="{Binding VariableName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsMouseOver" Value="True"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
+								<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="Selector.IsSelectionActive" Value="False"/>
+									<Condition Property="IsSelected" Value="True"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
+								<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="Selector.IsSelectionActive" Value="True"/>
+									<Condition Property="IsSelected" Value="True"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
+								<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TabControl HorizontalAlignment="Left" Height="684.232" VerticalAlignment="Top" Width="309.002" ItemContainerStyle="{DynamicResource TabHeaderTemplate}" 
+			Background="White" BorderBrush="#FFACACAC" Style="{DynamicResource TabContentTemplate}" Margin="10,10,0,0">
+			<TabItem Header="Properties" VerticalAlignment="Stretch" Height="Auto" FontSize="16" Padding="2,2,2,2">
+				<Grid>
+					<PropertiesGrid:PropertiesGrid x:Name="gridProperties" Margin="10" VerticalAlignment="Stretch" Background="{x:Null}"/>
+				</Grid>
+			</TabItem>
+
+			<!-- The variables listbox tab. -->
+			<TabItem x:Name="tabVariables" Header="Variables" VerticalAlignment="Stretch" Height="Auto" FontSize="16" Padding="2,2,2,2" >
+				<Grid Margin="0,0,-6,-9.247">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="9*"/>
+						<ColumnDefinition Width="218*"/>
+						<ColumnDefinition Width="67*"/>
+						<ColumnDefinition Width="15*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="70*"/>
+						<RowDefinition Height="441*"/>
+						<RowDefinition Height="44*"/>
+						<RowDefinition Height="26*"/>
+						<RowDefinition Height="59*"/>
+					</Grid.RowDefinitions>
+					<Button Content="Add" Margin="0,0,1.405,10" VerticalAlignment="Bottom" Style="{DynamicResource ButtonStyle}" MinWidth="50" Grid.Column="2" Padding="1,1,1,4" Command="{Binding AddVariableCommand}" CommandParameter="{Binding ElementName = txtVariableName, Path=Text}"/>
+					<Button Content="Remove" Margin="136.101,5.762,10,7.725" VerticalAlignment="Center" Style="{DynamicResource ButtonStyle}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" 
+                            Command="{Binding DeleteVariableCommand}" CommandParameter="{Binding ElementName= lbxVariables, Path=SelectedItem}" Width="71.9"/> 
+					<TextBox x:Name="txtVariableName" TextWrapping="Wrap" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}" ToolTip="Variable Name" 
+					Style="{DynamicResource TextboxStyle}" Margin="10,0,10,9.999" Grid.Column="1" VerticalAlignment="Bottom" Text="{Binding CurrentVariablesDB.VariableName}" Height="33.297"/>
+					
+					<ListBox HorizontalAlignment="Left" Height="421.16" Margin="10,10,0,0" VerticalAlignment="Top" x:Name="lbxVariables"
+					Width="273.597" BorderBrush="#FFC7C7C7" Background="{x:Null}" ItemContainerStyle="{DynamicResource VariableItemStyle}" 
+					ItemsSource="{Binding CurrentVariablesDB.GlobalVariables}" Grid.Row="1" 
+					Grid.Column="1" Grid.ColumnSpan="2" BorderThickness="0,0.5,0,1" Padding="0,5" Grid.RowSpan="2" />
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</UserControl>

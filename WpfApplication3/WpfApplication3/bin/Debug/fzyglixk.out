@@ -1,0 +1,17 @@
+﻿C:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug> "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" /t:exe /main:codeNamespace.class01 /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"
+
+
+Microsoft (R) Visual C# Compiler version 4.0.30319.33440
+for Microsoft (R) .NET Framework 4.5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(20,46): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(20,63): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(23,123): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(23,221): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(23,340): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(27,144): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(27,264): error CS1525: Invalid expression term 'int'
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(27,361): error CS1002: ; expected
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(27,361): error CS1525: Invalid expression term ')'
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(27,363): error CS1002: ; expected

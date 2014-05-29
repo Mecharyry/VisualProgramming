@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="WpfApplication3.View.DesignerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:b="clr-namespace:WpfApplication3.Behaviour"
+             xmlns:local="clr-namespace:WpfApplication3.View" 
+             xmlns:viewModel="clr-namespace:WpfApplication3.ViewModel"
+             xmlns:model="clr-namespace:WpfApplication3.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:Name="UserControl">
+    
+    <UserControl.Resources>
+        <CompositeCollection x:Key="Col">
+            <CollectionContainer Collection="{Binding DataContext.Controls, Source={x:Reference UserControl}}"/>
+            <CollectionContainer Collection="{Binding DataContext.Connections, Source={x:Reference UserControl}}"/>
+            <CollectionContainer Collection="{Binding DataContext.StartControl, Source={x:Reference UserControl}}"/>
+        </CompositeCollection>
+
+		<!-- Renders the controls. -->
+        <DataTemplate DataType="{x:Type viewModel:ControlViewModel}">
+            <local:CodeControlView></local:CodeControlView>
+        </DataTemplate>
+
+        <!-- Renders the connections between the controls. -->
+        <DataTemplate DataType="{x:Type model:ConnectionModel}">
+            <Line Stroke="Red" StrokeThickness="3"
+                            X1="{Binding Start.X}" Y1="{Binding Start.Y}"
+                            X2="{Binding End.X}" Y2="{Binding End.Y}" x:Name="Line"/>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding End}" Value="{x:Null}">
+                    <Setter TargetName="Line" Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <!-- Renders the start control. -->
+		<DataTemplate DataType="{x:Type model:StartModel}">
+			<local:StartControlView></local:StartControlView>
+		</DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <ListBox SelectedItem="{Binding CurrentControl}" MouseLeftButtonUp="ListBox_MouseLeftButtonUp" BorderBrush="{x:Null}">
+			<ListBox.ItemsSource>
+				<StaticResource ResourceKey="Col"/>
+			</ListBox.ItemsSource>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas x:Name="canvasDesigner" AllowDrop="True" Background="Transparent" SizeChanged="CanvasSizeChanged">
+                        <i:Interaction.Behaviors>
+                            <b:FrameworkElementDropBehaviour/>
+                        </i:Interaction.Behaviors>
+                    </Canvas>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay}"/>
+                    <Setter Property="Canvas.Top" Value="{Binding Y, Mode=TwoWay}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter x:Name="Content" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Content" Property="Effect">
+                                            <Setter.Value>
+                                                <DropShadowEffect Color="CadetBlue" ShadowDepth="2" BlurRadius="5"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+    </Grid>
+</UserControl>

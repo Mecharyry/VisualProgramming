@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExcelForLoopModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <StartValue>0</StartValue>
+  <EndValue>0</EndValue>
+  <ConditionOperator>LessThan</ConditionOperator>
+  <IncrementOperator>Add</IncrementOperator>
+  <ForEach>Worksheet</ForEach>
+  <Condition>All</Condition>
+  <IndexOf>0</IndexOf>
+</ExcelForLoopModel>

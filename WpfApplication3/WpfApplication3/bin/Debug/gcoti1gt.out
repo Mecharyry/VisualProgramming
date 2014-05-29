@@ -1,0 +1,8 @@
+﻿C:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug> "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" /t:exe /main:codeNamespace.class01 /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"
+
+
+Microsoft (R) Visual C# Compiler version 4.0.30319.33440
+for Microsoft (R) .NET Framework 4.5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(36,64): error CS1061: 'object' does not contain a definition for 'Select' and no extension method 'Select' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)

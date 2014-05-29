@@ -1,0 +1,11 @@
+﻿C:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug> "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" /t:exe /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"
+
+
+Microsoft (R) Visual C# Compiler version 4.0.30319.33440
+for Microsoft (R) .NET Framework 4.5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug\Sample.cs(23,18): error CS0101: The namespace 'namespace01' already contains a definition for 'class01'
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug\Sample.cs(14,18): (Location of symbol related to previous error)
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug\Sample.cs(32,18): error CS0101: The namespace 'namespace01' already contains a definition for 'class01'
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\VisualProgrammingUnitTesting\bin\Debug\Sample.cs(14,18): (Location of symbol related to previous error)

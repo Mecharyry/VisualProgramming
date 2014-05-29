@@ -1,0 +1,1 @@
+﻿/t:exe /main:codeNamespace.class01 /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"

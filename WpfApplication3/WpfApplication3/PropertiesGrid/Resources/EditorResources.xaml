@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Local="clr-namespace:WpfApplication3.PropertiesGrid.Resources"
+                    x:Class="WpfApplication3.PropertiesGrid.Resources.EditorResources">
+
+    <DataTemplate x:Key='ForLoop'
+                  xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
+                  xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+                  xmlns:sys='clr-namespace:System;assembly=mscorlib'
+                  xmlns:pe='clr-namespace:System.Activities.Presentation.PropertyEditing;assembly=System.Activities.Presentation'
+                  xmlns:con='clr-namespace:WpfApplication3.PropertiesGrid.Converters'
+                  xmlns:mod='clr-namespace:WpfApplication3.Model.Code_Control'
+                  xmlns:data='clr-namespace:WpfApplication3.Database'>
+
+        <DataTemplate.Resources>
+            <con:ComboBoxToStringConverter x:Name='StringConversion' x:Key='StringConversion'/>
+            <con:ObjectToStringConverter x:Name='ObjectToStringConversion' x:Key='ObjConversion'/>
+            <data:VariablesDB x:Key="variableStore"/>
+        </DataTemplate.Resources>
+
+        <ComboBox x:Name="comboVariables"  Width='120' SelectedItem='{Binding Path=Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus, Converter={StaticResource StringConversion}}' 
+                  ItemsSource="{Binding Source={StaticResource variableStore}, Path=Connections, Mode=OneWay, Converter={StaticResource ObjConversion}}">
+        </ComboBox>
+    </DataTemplate>
+
+    <DataTemplate   x:Key="FileBrowserEditorTemplate"
+                    xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
+                    xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+                    xmlns:pe='clr-namespace:System.Activities.Presentation.PropertyEditing;assembly=System.Activities.Presentation'>
+
+        <DockPanel LastChildFill='True'>
+            <pe:EditModeSwitchButton TargetEditMode='Dialog' Name='EditButton' 
+                                     DockPanel.Dock='Right'>...</pe:EditModeSwitchButton>
+            <TextBlock Text='{Binding Value}' Margin='2,0,0,0' VerticalAlignment='Center'/>
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

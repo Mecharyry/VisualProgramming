@@ -1,0 +1,92 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:local="clr-namespace:WpfApplication3"
+	mc:Ignorable="d"
+	x:Class="WpfApplication3.View.CodeControlView"
+	x:Name="UserControl"
+	d:DesignWidth="100" d:DesignHeight="100">
+
+    <UserControl.Resources>
+
+        <Style x:Key="ThumbStyle" TargetType="{x:Type Thumb}">
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Thumb}">
+        				<Ellipse Stroke="DarkSlateGray" StrokeThickness="0.5" >
+        					<Ellipse.Fill >
+        						<SolidColorBrush Color="#FFADBCFF" Opacity="0.2"/>
+        					</Ellipse.Fill>
+        					<Ellipse.BitmapEffect>
+        						<DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="5"
+        							Softness="0.5" Opacity="2"/>
+        					</Ellipse.BitmapEffect>
+        				</Ellipse>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
+        <Style x:Key="InformationStyle" TargetType="{x:Type Border}">
+        	<Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+
+	<Viewbox Stretch="Fill">
+        <Grid Height="100" Width="100" Background="Transparent" Margin="-20,-72,20,72">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="4*"/>
+				<RowDefinition Height="17*"/>
+				<RowDefinition Height="4*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="9*"/>
+				<ColumnDefinition Width="82*"/>
+				<ColumnDefinition Width="9*"/>
+			</Grid.ColumnDefinitions>
+
+			<Rectangle Cursor="SizeAll" Fill="Transparent" Panel.ZIndex="1" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+			<Thumb Cursor="SizeAll" Panel.ZIndex="2" DragDelta="Thumb_DragDelta"  Grid.ColumnSpan="3" Grid.RowSpan="3" Style="{StaticResource ThumbStyle}" Background="White"/>
+			<Image Grid.Column="1" Grid.Row="1" Source="{Binding CurrentCodeModel.ImageSource}"/>
+            
+			<Border BorderThickness="2" HorizontalAlignment="Left" Height="24" 
+				VerticalAlignment="Top" Width="24" CornerRadius="20" BorderBrush="DarkSlateGray" Style="{StaticResource InformationStyle}" Grid.Column="1" Margin="58,44,0,0" Grid.Row="1" Panel.ZIndex="2">
+				<Label Content="i" Margin="-2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+					FontFamily="Monotype Corsiva" FontSize="22.667" Padding="7,0,5,5"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding SetPropertiesCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+			</Border>
+
+			<Border BorderThickness="2" HorizontalAlignment="Left" Height="24"
+				VerticalAlignment="Top" Width="24" CornerRadius="20" BorderBrush="DarkSlateGray" Style="{StaticResource InformationStyle}" Grid.Column="1" Margin="0,44,0,0" Grid.Row="1" 
+				MouseLeftButtonDown="StartLine_MouseLeftButtonDown" MouseLeftButtonUp="EndLink_MouseLeftButtonUp" Panel.ZIndex="2">
+				<Label Content="l" Margin="-3.25,-0.625,-0.75,-3.375" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+					FontFamily="Monotype Corsiva" FontSize="22.667" Padding="7,0,5,5"/>
+			</Border>
+
+			<Border BorderThickness="2" Height="24"
+				VerticalAlignment="Top" CornerRadius="20" BorderBrush="DarkSlateGray" Style="{StaticResource InformationStyle}" Grid.Column="1" Margin="29.004,0,28.996,0" 
+				Panel.ZIndex="2" Grid.RowSpan="2">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="MouseLeftButtonDown">
+						<i:InvokeCommandAction Command="{Binding RemoveControlCommand}"/>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+				<Label Content="x" Margin="-3.25,-3.464,-0.75,-0.536" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" 
+					FontFamily="Monotype Corsiva" FontSize="22.667" Padding="7,0,5,5" Cursor="Arrow"/>
+			</Border>
+		</Grid>
+	</Viewbox>
+</UserControl>

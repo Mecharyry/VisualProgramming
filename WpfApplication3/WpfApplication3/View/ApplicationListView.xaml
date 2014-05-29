@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="WpfApplication3.View.ApplicationListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ViewModel="clr-namespace:WpfApplication3.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ViewModel:ApplicationsViewModel x:Key="Applications"/>
+
+        <DataTemplate x:Key="ApplicationsItemTemplate">
+            <Border Height="Auto" Width="Auto" Background="#FFECECEC" BorderThickness="1" CornerRadius="8" Margin="0,2,0,0" VerticalAlignment="Stretch">
+                <Grid VerticalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="27*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding ImageSource}" HorizontalAlignment="Center" Height="30.96" Width="30.227" Margin="10.5,5,9.5,5" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Application}" Margin="10,10,10,0" Grid.ColumnSpan="1" Grid.Column="1" Height="15.96" VerticalAlignment="Top" HorizontalAlignment="Center" Width="59.773"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <ListBox x:Name="lstbxApplication" SelectedItem="{Binding CurrentApplicationsDB.CurrentApplication, Mode=TwoWay}" Padding="6,0,0,0" 
+                 ItemsSource="{Binding CurrentApplicationsDB.Applications}" ItemTemplate="{DynamicResource ApplicationsItemTemplate}" DataContext="{StaticResource Applications}" 
+                 Background="Transparent" BorderBrush="{x:Null}" IsSynchronizedWithCurrentItem="False"/>
+    </Grid>
+</UserControl>

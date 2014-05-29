@@ -1,0 +1,10 @@
+﻿C:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug> "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" /t:exe /main:codeNamespace.class01 /utf8output /R:"Microsoft.Office.Interop.Excel.dll" /R:"System.dll" /R:"Microsoft.CSharp.dll" /out:"Sample.exe" /D:DEBUG /debug+ /optimize- /w:3 /optimize  "Sample.cs"
+
+
+Microsoft (R) Visual C# Compiler version 4.0.30319.33440
+for Microsoft (R) .NET Framework 4.5
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(33,49): error CS0841: Cannot use local variable 'Excel_Connection0Workbook' before it is declared
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(34,122): error CS0841: Cannot use local variable 'Excel_Connection0Workbook' before it is declared
+c:\Users\RyRy\Documents\Visual Studio 2012\Projects\WpfApplication3\WpfApplication3\bin\Debug\Sample.cs(37,81): error CS0841: Cannot use local variable 'Excel_Connection0Application' before it is declared
